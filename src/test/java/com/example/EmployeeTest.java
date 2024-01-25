@@ -15,4 +15,12 @@ class EmployeeTest {
         assertEquals(50000.0, employee.getSalary(), 0.001);
         assertFalse(employee.isPaid());
     }
+
+    @Test
+    @DisplayName("Test getter and setter for Id")
+    public void testGetterAndSetterForId() {
+        Employee employee = new Employee("456", 75000.0);
+        employee.setId("555");
+        assertEquals("555", employee.getId());
+    }
 }
