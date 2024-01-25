@@ -42,4 +42,12 @@ class EmployeeTest {
         assertEquals(35000.0, employee.getSalary(), 0.001);
     }
 
+    @Test
+    @DisplayName("Test toString")
+    public void testToString() {
+        Employee employee = new Employee("202", 90000.0);
+        String expectedString = "Employee [id=202, salary=90000.0]";
+        assertEquals(expectedString, employee.toString());
+    }
+
 }
