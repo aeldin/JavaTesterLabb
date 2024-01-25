@@ -23,4 +23,23 @@ class EmployeeTest {
         employee.setId("555");
         assertEquals("555", employee.getId());
     }
+
+    @Test
+    @DisplayName("Test getter and setter for Paid")
+    public void testGetterAndSetterForPaid() {
+       Employee employee = new Employee("111", 53000.0);
+       assertFalse(employee.isPaid());
+
+       employee.setPaid(true);
+       assertTrue(employee.isPaid());
+    }
+
+    @Test
+    @DisplayName("Test getter and setter for salary")
+    public void testGetterAndSetterForSalary() {
+        Employee employee = new Employee("333", 27000.0);
+        employee.setSalary(35000.0);
+        assertEquals(35000.0, employee.getSalary(), 0.001);
+    }
+
 }
