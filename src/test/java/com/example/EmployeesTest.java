@@ -11,12 +11,13 @@ import static org.mockito.Mockito.*;
 
 class EmployeesTest {
 
+    EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
+    BankService bankService = mock(BankService.class);
+    Employees employees = new Employees(employeeRepository, bankService);
+
     @Test
     @DisplayName("Test payEmployees Success")
     public void testPayEmployeesSuccess() {
-        EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
-        BankService bankService = mock(BankService.class);
-        Employees employees = new Employees(employeeRepository, bankService);
 
         List<Employee> employeesList = Arrays.asList(new Employee("123", 50000.0), new Employee("124", 55000.0));
         when(employeeRepository.findAll()).thenReturn(employeesList);
@@ -29,5 +30,8 @@ class EmployeesTest {
         assertTrue(employeesList.get(0).isPaid());
         assertTrue(employeesList.get(1).isPaid());
     }
+
+
+
 
 }
