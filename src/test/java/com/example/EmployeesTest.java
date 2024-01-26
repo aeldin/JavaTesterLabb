@@ -14,12 +14,13 @@ class EmployeesTest {
     EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
     BankService bankService = mock(BankService.class);
     Employees employees = new Employees(employeeRepository, bankService);
+    List<Employee> employeesList = Arrays.asList(new Employee("123", 50000.0), new Employee("124", 55000.0));
 
     @Test
     @DisplayName("Test payEmployees Success")
     public void testPayEmployeesSuccess() {
 
-        List<Employee> employeesList = Arrays.asList(new Employee("123", 50000.0), new Employee("124", 55000.0));
+
         when(employeeRepository.findAll()).thenReturn(employeesList);
 
         doNothing().when(bankService).pay(anyString(), anyDouble());
