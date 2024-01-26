@@ -8,13 +8,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.eq;
 
 class EmployeesTest {
 
     EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
     BankService bankService = mock(BankService.class);
     Employees employees = new Employees(employeeRepository, bankService);
-    List<Employee> employeesList = Arrays.asList(new Employee("123", 50000.0), new Employee("124", 55000.0));
+    List<Employee> employeesList = Arrays.asList(new Employee("1", 50000.0), new Employee("2", 55000.0));
 
     @Test
     @DisplayName("Test payEmployees Success")
@@ -32,7 +33,20 @@ class EmployeesTest {
         assertTrue(employeesList.get(1).isPaid());
     }
 
+    @Test
+    @DisplayName("Test payEmployees Failure")
+    public void testPayEmployeesFailure() {
 
+        when(employeeRepository.findAll()).thenReturn(employeesList);
+
+        doThrow(new RuntimeException("Payment failed")).when(bankService).pay(eq("2"), anyDouble());
+
+        int payments = employees.payEmployees();
+
+        assertEquals(1, payments);
+        assertTrue(employeesList.get(0).isPaid());
+        assertFalse(employeesList.get(1).isPaid());
+    }
 
 
 }
