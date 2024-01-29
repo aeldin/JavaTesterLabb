@@ -44,5 +44,14 @@ public class StringCalculatorTest {
         assertEquals(6,result);
     }
 
+    @Test
+    @DisplayName("Add with custom delimiter")
+    public void addWithCustomDelimiter() {
+        int result = calculator.Add("//;\n1;2");
+        assertEquals(3, result);
+    }
+
+
+
 
 }
