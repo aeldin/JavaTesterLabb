@@ -31,8 +31,10 @@ public class StringCalculator {
             int currentNum = Integer.parseInt(num);
             if (currentNum < 0) {
                 negativeNumbers.add(currentNum);
+            }else if (currentNum <= 1000) {
+                sum += currentNum;
             }
-            sum += currentNum;
+
         }
         if (!negativeNumbers.isEmpty()) {
             throw new RuntimeException("Negatives not allowed: " + negativeNumbers.stream()
