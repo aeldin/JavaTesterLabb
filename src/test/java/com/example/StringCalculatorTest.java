@@ -28,7 +28,13 @@ public class StringCalculatorTest {
     public void addTwoNumbers() {
         int result = calculator.Add("1,2");
         assertEquals(3, result);
+    }
 
+    @Test
+    @DisplayName("Add unknown amount of numbers")
+    public void addUnknownAmountOfNumbers() {
+        int result = calculator.Add("1,2,3,4,5");
+        assertEquals(15, result);
     }
 
 
