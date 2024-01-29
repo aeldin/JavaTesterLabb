@@ -8,10 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StringCalculatorTest {
 
     @Test
-    @DisplayName("Return empty string")
-    public void returnEmptyString () {
+    @DisplayName("Add empty string")
+    public void addEmptyString () {
         StringCalculator calculator = new StringCalculator();
         int result = calculator.Add("");
         assertEquals(0,result);
     }
+
+
 }
