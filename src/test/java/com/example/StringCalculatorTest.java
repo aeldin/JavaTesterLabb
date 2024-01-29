@@ -88,4 +88,11 @@ public class StringCalculatorTest {
         assertEquals(6, result);
     }
 
+    @Test
+    @DisplayName("Add with multiple delimiters of any length")
+    public void addWithMultipleDelimitersOfAnyLength () {
+        int result = calculator.Add("//[***][%%]\n1***2%%3");
+        assertEquals(6, result);
+    }
+
 }
