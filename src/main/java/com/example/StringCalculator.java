@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringCalculator {
@@ -16,6 +18,9 @@ public class StringCalculator {
             String numbersSubstring = numbers.substring(delimiterIndex + 1);
 
             String[] nums = numbersSubstring.split("[" + customDelimiter + "\n]+");
+
+
+
             return handleNumbers(nums);
         }
 

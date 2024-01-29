@@ -74,5 +74,12 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("Add with custom delimiter of any length")
+    public void addWithCustomDelimiterOfAnyLength() {
+        int result = calculator.Add("//[***]\n1***2***3");
+        assertEquals(6, result);
+    }
+
 
 }
