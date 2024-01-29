@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringCalculatorTest {
 
@@ -56,6 +57,13 @@ public class StringCalculatorTest {
     public void addWithCustomDelimitersAndNewLines() {
         int result = calculator.Add("//|\n1|2\n3");
         assertEquals(6, result);
+    }
+
+    @Test
+    @DisplayName("Add with negative numbers")
+    public void addWithNegativeNumbers() {
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> calculator.Add("1,-2,3,-4"));
+        assertEquals("Negatives not allowed: -2, -4", exception.getMessage());
     }
 
 

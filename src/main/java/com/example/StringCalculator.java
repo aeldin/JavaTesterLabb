@@ -1,5 +1,9 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class StringCalculator {
     public int Add(String numbers) {
         if (numbers.isEmpty()) {
@@ -8,23 +12,32 @@ public class StringCalculator {
 
         if (numbers.startsWith("//")) {
             int delimiterIndex = numbers.indexOf("\n");
-            String customDelimiter = numbers.substring(2,delimiterIndex);
+            String customDelimiter = numbers.substring(2, delimiterIndex);
             String numbersSubstring = numbers.substring(delimiterIndex + 1);
 
             String[] nums = numbersSubstring.split("[" + customDelimiter + "\n]+");
-            int sum = 0;
-            for (String num : nums) {
-                sum += Integer.parseInt(num);
-            }
-            return sum;
-
+            return handleNumbers(nums);
         }
 
 
         String[] nums = numbers.split("[,\n]");
+        return handleNumbers(nums);
+    }
+
+    private int handleNumbers(String[] nums) {
+        List<Integer> negativeNumbers = new ArrayList<>();
         int sum = 0;
         for (String num : nums) {
-            sum += Integer.parseInt(num);
+            int currentNum = Integer.parseInt(num);
+            if (currentNum < 0) {
+                negativeNumbers.add(currentNum);
+            }
+            sum += currentNum;
+        }
+        if (!negativeNumbers.isEmpty()) {
+            throw new RuntimeException("Negatives not allowed: " + negativeNumbers.stream()
+                    .map(Object::toString)
+                    .collect(Collectors.joining(", ")));
         }
         return sum;
     }
