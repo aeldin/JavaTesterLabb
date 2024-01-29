@@ -19,8 +19,8 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("Add single number")
     public void addSingleNumber() {
-
-
+        int result = calculator.Add("1");
+        assertEquals(1, result);
     }
 
 
