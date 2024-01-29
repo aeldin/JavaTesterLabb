@@ -51,7 +51,12 @@ public class StringCalculatorTest {
         assertEquals(3, result);
     }
 
-
+    @Test
+    @DisplayName("Add with custom delimiters and new lines")
+    public void addWithCustomDelimitersAndNewLines() {
+        int result = calculator.Add("//|\n1|2\n3");
+        assertEquals(6, result);
+    }
 
 
 }
