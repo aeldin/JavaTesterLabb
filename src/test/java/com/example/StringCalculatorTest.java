@@ -23,5 +23,13 @@ public class StringCalculatorTest {
         assertEquals(1, result);
     }
 
+    @Test
+    @DisplayName("Add two numbers")
+    public void addTwoNumbers() {
+        int result = calculator.Add("1,2");
+        assertEquals(3, result);
+
+    }
+
 
 }
